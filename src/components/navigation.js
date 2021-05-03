@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { navigate } from '@reach/router';
+import { useSelector } from 'react-redux';
+import _ from 'lodash';
 
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
@@ -10,6 +12,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import Collapse from '@material-ui/core/Collapse';
+import Badge from '@material-ui/core/Badge';
 
 import PeopleIcon from '@material-ui/icons/People';
 import BusinessIcon from '@material-ui/icons/Business';
@@ -20,26 +23,39 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 import MonetizationOn from '@material-ui/icons/MonetizationOn';
 
 import { AuthConsumer } from './auth/auth-context';
+import {
+  selectAllRequests,
+  selectTotalRequests,
+} from '../store/requests-slice';
 
 const educationItems = [
   {
     title: 'University',
+    requestsKey: 'university',
     to: '/education/requests/university',
     className: 'nested',
   },
   {
     title: 'Bootcamps',
+    requestsKey: 'bootcamps',
     to: '/education/requests/bootcamps',
     className: 'nested',
   },
   {
     title: 'Professional training',
+    requestsKey: 'profTraining',
     to: '/education/requests/prof-training',
     className: 'nested',
   },
-  { title: 'School', to: '/education/requests/school', className: 'nested' },
+  {
+    title: 'School',
+    requestsKey: 'school',
+    to: '/education/requests/school',
+    className: 'nested',
+  },
   {
     title: 'Enterprise',
+    requestsKey: 'enterprise',
     to: '/education/requests/enterprise',
     className: 'nested',
   },
@@ -51,6 +67,7 @@ const menuItems = [
   { subheader: 'Education' },
   {
     title: 'Trial requests',
+    requestsKey: 'total',
     icon: <SchoolIcon />,
     group: true,
     items: educationItems,
@@ -62,7 +79,7 @@ const menuItems = [
   },
 ];
 
-const drawerWidth = 240;
+const drawerWidth = 250;
 
 const useStyles = makeStyles((theme) => ({
   drawer: {
@@ -76,9 +93,25 @@ const useStyles = makeStyles((theme) => ({
   nested: {
     paddingLeft: theme.spacing(4),
   },
+  collapseIconWithBadge: {
+    marginLeft: 28,
+  },
 }));
 
+const StyledBadge = withStyles(() => ({
+  badge: {
+    right: -16,
+    top: 15,
+    padding: '0 4px',
+  },
+}))(Badge);
+
 const Navigation = () => {
+  const requests = useSelector(selectAllRequests);
+  const totalRequests = useSelector(selectTotalRequests);
+  const requestsByType = _.groupBy(requests, 'type');
+  const requestsCountMap = _.mapValues(requestsByType, values => values.length)
+  requestsCountMap.total = totalRequests
   const [openRequests, setOpenRequests] = useState(true);
   const classes = useStyles();
   const renderMenuItems = (items, parentKey = '') => {
@@ -100,7 +133,22 @@ const Navigation = () => {
         );
       }
       const icon = item.icon ? <ListItemIcon>{item.icon}</ListItemIcon> : null;
+      const itemText = <ListItemText primary={item.title} />;
+      let listTextEl = itemText;
+      if (item.requestsKey) {
+        listTextEl = (
+          <StyledBadge
+            badgeContent={requestsCountMap[item.requestsKey]}
+            color="primary"
+          >
+            {itemText}
+          </StyledBadge>
+        );
+      }
       if (item.group) {
+        const collapseIconClass = item.requestsKey
+          ? classes.collapseIconWithBadge
+          : '';
         return (
           <React.Fragment key={key}>
             <ListItem
@@ -109,8 +157,12 @@ const Navigation = () => {
               className={classes[item.className]}
             >
               {icon}
-              <ListItemText primary={item.title} />
-              {openRequests ? <ExpandLess /> : <ExpandMore />}
+              {listTextEl}
+              {openRequests ? (
+                <ExpandLess className={collapseIconClass} />
+              ) : (
+                <ExpandMore className={collapseIconClass} />
+              )}
             </ListItem>
             <Collapse in={openRequests} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
@@ -128,7 +180,7 @@ const Navigation = () => {
           className={classes[item.className]}
         >
           {icon}
-          <ListItemText primary={item.title} />
+          {listTextEl}
         </ListItem>
       );
     });
