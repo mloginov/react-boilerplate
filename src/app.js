@@ -14,10 +14,6 @@ import store from './store/store';
 import Accounts from './pages/accounts';
 import Landing from './pages/landing';
 
-import { fetchRequests } from './store/requests-slice';
-
-store.dispatch(fetchRequests());
-
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',

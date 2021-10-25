@@ -21,5 +21,5 @@ const fetchRequests = async () => {
 };
 
 export default {
-  fetchRequests
-}
+  fetchRequests,
+};

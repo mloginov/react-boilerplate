@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { navigate } from '@reach/router';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import _ from 'lodash';
 
 import { makeStyles, withStyles } from '@material-ui/core/styles';
@@ -22,8 +22,9 @@ import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import MonetizationOn from '@material-ui/icons/MonetizationOn';
 
-import { AuthConsumer } from './auth/auth-context';
+import { AuthConsumer, AuthContext } from './auth/auth-context';
 import {
+  fetchRequests,
   selectAllRequests,
   selectTotalRequests,
 } from '../store/requests-slice';
@@ -60,6 +61,7 @@ const educationItems = [
     className: 'nested',
   },
 ];
+
 const menuItems = [
   { title: 'Accounts', to: '/accounts', icon: <PeopleIcon /> },
   { title: 'Organizations', to: '/organizations', icon: <BusinessIcon /> },
@@ -107,11 +109,19 @@ const StyledBadge = withStyles(() => ({
 }))(Badge);
 
 const Navigation = () => {
+  const { isAuth } = useContext(AuthContext);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    isAuth && dispatch(fetchRequests());
+  }, [isAuth]);
   const requests = useSelector(selectAllRequests);
   const totalRequests = useSelector(selectTotalRequests);
   const requestsByType = _.groupBy(requests, 'type');
-  const requestsCountMap = _.mapValues(requestsByType, values => values.length)
-  requestsCountMap.total = totalRequests
+  const requestsCountMap = _.mapValues(
+    requestsByType,
+    (values) => values.length
+  );
+  requestsCountMap.total = totalRequests;
   const [openRequests, setOpenRequests] = useState(true);
   const classes = useStyles();
   const renderMenuItems = (items, parentKey = '') => {
