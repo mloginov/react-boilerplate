@@ -22,7 +22,7 @@ import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import MonetizationOn from '@material-ui/icons/MonetizationOn';
 
-import { AuthConsumer, AuthContext } from './auth/auth-context';
+import { AuthContext } from './auth/auth-context';
 import {
   fetchRequests,
   selectAllRequests,
@@ -109,10 +109,12 @@ const StyledBadge = withStyles(() => ({
 }))(Badge);
 
 const Navigation = () => {
-  const { isAuth } = useContext(AuthContext);
+  const { isAuth, login } = useContext(AuthContext);
   const dispatch = useDispatch();
   useEffect(() => {
-    isAuth && dispatch(fetchRequests());
+    if (isAuth) {
+      dispatch(fetchRequests());
+    }
   }, [isAuth]);
   const requests = useSelector(selectAllRequests);
   const totalRequests = useSelector(selectTotalRequests);
@@ -208,22 +210,18 @@ const Navigation = () => {
       <div className={classes.toolbar} />
       <Divider />
       <List>
-        <AuthConsumer>
-          {({ isAuth, login }) => (
-            <div>
-              {isAuth ? (
-                renderMenuItems(menuItems)
-              ) : (
-                <ListItem button onClick={login}>
-                  <ListItemIcon>
-                    <VpnKeyIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="Login" />
-                </ListItem>
-              )}
-            </div>
+        <div>
+          {isAuth ? (
+            renderMenuItems(menuItems)
+          ) : (
+            <ListItem button onClick={login}>
+              <ListItemIcon>
+                <VpnKeyIcon />
+              </ListItemIcon>
+              <ListItemText primary="Login" />
+            </ListItem>
           )}
-        </AuthConsumer>
+        </div>
       </List>
     </Drawer>
   );

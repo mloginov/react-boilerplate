@@ -1,4 +1,4 @@
-import faker from 'faker';
+import { faker } from '@faker-js/faker';
 
 import { stall } from './helper';
 
@@ -12,7 +12,7 @@ const types = [
 const requestFixture = () => ({
   id: faker.datatype.uuid(),
   name: `${faker.address.city()} Request`,
-  type: faker.random.arrayElement(types),
+  type: faker.helpers.arrayElement(types),
 });
 
 const fetchRequests = async () => {
