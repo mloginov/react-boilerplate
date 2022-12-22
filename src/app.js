@@ -2,8 +2,8 @@ import React from 'react';
 import { Router } from '@reach/router';
 import { Provider } from 'react-redux';
 
-import { makeStyles } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 
 import { AuthProvider } from './components/auth/auth-context';
 import { ProtectedRoute, PublicRoute } from './components/routes';
@@ -14,26 +14,16 @@ import store from './store/store';
 import Accounts from './pages/accounts';
 import Landing from './pages/landing';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-  },
-  content: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.default,
-    padding: theme.spacing(3),
-  },
-}));
+const theme = createTheme();
 
-const App = () => {
-  const classes = useStyles();
-  return (
+const App = () => (
+  <ThemeProvider theme={theme}>
     <Provider store={store}>
-      <div className={classes.root}>
+      <div style={{display: 'flex'}}>
         <CssBaseline />
         <AuthProvider>
           <Navigation />
-          <main className={classes.content}>
+          <main style={{flexGrow: 1, backgroundColor: theme.palette.background.default, padding: theme.spacing(3)}}>
             <Router>
               <ProtectedRoute path="/accounts" component={Accounts} />
               <PublicRoute path="/" component={Landing} />
@@ -42,7 +32,7 @@ const App = () => {
         </AuthProvider>
       </div>
     </Provider>
-  );
-};
+  </ThemeProvider>
+);
 
 export default App;

@@ -3,24 +3,24 @@ import { navigate } from '@reach/router';
 import { useSelector, useDispatch } from 'react-redux';
 import _ from 'lodash';
 
-import { makeStyles, withStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import Divider from '@material-ui/core/Divider';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListSubheader from '@material-ui/core/ListSubheader';
-import Collapse from '@material-ui/core/Collapse';
-import Badge from '@material-ui/core/Badge';
+import { useTheme } from '@mui/material/styles';
+import Drawer from '@mui/material/Drawer';
+import Divider from '@mui/material/Divider';
+import List from '@mui/material/List';
+import ListItemButton from '@mui/material/ListItemButton'
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import ListSubheader from '@mui/material/ListSubheader';
+import Collapse from '@mui/material/Collapse';
+import Badge from '@mui/material/Badge';
 
-import PeopleIcon from '@material-ui/icons/People';
-import BusinessIcon from '@material-ui/icons/Business';
-import SchoolIcon from '@material-ui/icons/School';
-import VpnKeyIcon from '@material-ui/icons/VpnKey';
-import ExpandLess from '@material-ui/icons/ExpandLess';
-import ExpandMore from '@material-ui/icons/ExpandMore';
-import MonetizationOn from '@material-ui/icons/MonetizationOn';
+import PeopleIcon from '@mui/icons-material/People';
+import BusinessIcon from '@mui/icons-material/Business';
+import SchoolIcon from '@mui/icons-material/School';
+import VpnKeyIcon from '@mui/icons-material/VpnKey';
+import ExpandLess from '@mui/icons-material/ExpandLess';
+import ExpandMore from '@mui/icons-material/ExpandMore';
+import MonetizationOn from '@mui/icons-material/MonetizationOn';
 
 import { AuthContext } from './auth/auth-context';
 import {
@@ -34,31 +34,31 @@ const educationItems = [
     title: 'University',
     requestsKey: 'university',
     to: '/education/requests/university',
-    className: 'nested',
+    styleName: 'nested',
   },
   {
     title: 'Bootcamps',
     requestsKey: 'bootcamps',
     to: '/education/requests/bootcamps',
-    className: 'nested',
+    styleName: 'nested',
   },
   {
     title: 'Professional training',
     requestsKey: 'profTraining',
     to: '/education/requests/prof-training',
-    className: 'nested',
+    styleName: 'nested',
   },
   {
     title: 'School',
     requestsKey: 'school',
     to: '/education/requests/school',
-    className: 'nested',
+    styleName: 'nested',
   },
   {
     title: 'Enterprise',
     requestsKey: 'enterprise',
     to: '/education/requests/enterprise',
-    className: 'nested',
+    styleName: 'nested',
   },
 ];
 
@@ -83,34 +83,33 @@ const menuItems = [
 
 const drawerWidth = 250;
 
-const useStyles = makeStyles((theme) => ({
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
-  drawerPaper: {
-    width: drawerWidth,
-  },
-  toolbar: theme.mixins.toolbar,
-  nested: {
-    paddingLeft: theme.spacing(4),
-  },
-  collapseIconWithBadge: {
-    marginLeft: 28,
-  },
-}));
-
-const StyledBadge = withStyles(() => ({
-  badge: {
-    right: -16,
-    top: 15,
-    padding: '0 4px',
-  },
-}))(Badge);
-
 const Navigation = () => {
   const { isAuth, login } = useContext(AuthContext);
+  const theme = useTheme()
   const dispatch = useDispatch();
+
+  const styles = {
+    drawer: {
+      width: drawerWidth,
+      flexShrink: 0,
+    },
+    drawerPaper: {
+      width: drawerWidth,
+    },
+    toolbar: theme.mixins.toolbar,
+    nested: {
+      paddingLeft: theme.spacing(4),
+    },
+    collapseIconWithBadge: {
+      marginLeft: 28,
+    },
+    badge: {
+      right: -16,
+      top: 15,
+      padding: '0 4px',
+    },
+  };
+
   useEffect(() => {
     if (isAuth) {
       dispatch(fetchRequests());
@@ -125,12 +124,12 @@ const Navigation = () => {
   );
   requestsCountMap.total = totalRequests;
   const [openRequests, setOpenRequests] = useState(true);
-  const classes = useStyles();
+
   const renderMenuItems = (items, parentKey = '') => {
     const elements = items.map((item, index) => {
       const key = `${parentKey}-${index}`;
       if (item.divider) {
-        return <Divider key={key} className={classes[item.className]} />;
+        return <Divider key={key} sx={styles[item.styleName]} />;
       }
       if (item.subheader) {
         return (
@@ -138,7 +137,7 @@ const Navigation = () => {
             key={key}
             inset
             disableSticky
-            className={classes[item.className]}
+            sx={styles[item.styleName]}
           >
             {item.subheader}
           </ListSubheader>
@@ -149,33 +148,32 @@ const Navigation = () => {
       let listTextEl = itemText;
       if (item.requestsKey) {
         listTextEl = (
-          <StyledBadge
+          <Badge
             badgeContent={requestsCountMap[item.requestsKey]}
             color="primary"
-          >
+            sx={{"& .MuiBadge-badge": styles.badge}}>
             {itemText}
-          </StyledBadge>
+          </Badge>
         );
       }
       if (item.group) {
-        const collapseIconClass = item.requestsKey
-          ? classes.collapseIconWithBadge
-          : '';
+        const collapseIconStyle = item.requestsKey
+          ? styles.collapseIconWithBadge
+          : undefined;
         return (
           <React.Fragment key={key}>
-            <ListItem
-              button
+            <ListItemButton
               onClick={() => setOpenRequests(!openRequests)}
-              className={classes[item.className]}
+              sx={styles[item.className]}
             >
               {icon}
               {listTextEl}
               {openRequests ? (
-                <ExpandLess className={collapseIconClass} />
+                <ExpandLess sx={collapseIconStyle} />
               ) : (
-                <ExpandMore className={collapseIconClass} />
+                <ExpandMore sx={collapseIconStyle} />
               )}
-            </ListItem>
+            </ListItemButton>
             <Collapse in={openRequests} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
                 {renderMenuItems(item.items, key)}
@@ -185,15 +183,14 @@ const Navigation = () => {
         );
       }
       return (
-        <ListItem
+        <ListItemButton
           key={key}
-          button
           onClick={() => navigate(item.to)}
-          className={classes[item.className]}
+          sx={styles[item.className]}
         >
           {icon}
           {listTextEl}
-        </ListItem>
+        </ListItemButton>
       );
     });
     return <>{elements}</>;
@@ -201,25 +198,23 @@ const Navigation = () => {
   return (
     <Drawer
       variant="permanent"
-      className={classes.drawer}
-      classes={{
-        paper: classes.drawerPaper,
-      }}
+      sx={styles.drawer}
+      PaperProps={{sx: styles.drawerPaper}}
       anchor="left"
     >
-      <div className={classes.toolbar} />
+      <div style={styles.toolbar} />
       <Divider />
       <List>
         <div>
           {isAuth ? (
             renderMenuItems(menuItems)
           ) : (
-            <ListItem button onClick={login}>
+            <ListItemButton onClick={login}>
               <ListItemIcon>
                 <VpnKeyIcon />
               </ListItemIcon>
               <ListItemText primary="Login" />
-            </ListItem>
+            </ListItemButton>
           )}
         </div>
       </List>
