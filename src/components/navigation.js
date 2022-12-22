@@ -164,7 +164,7 @@ const Navigation = () => {
           <React.Fragment key={key}>
             <ListItemButton
               onClick={() => setOpenRequests(!openRequests)}
-              sx={styles[item.className]}
+              sx={styles[item.styleName]}
             >
               {icon}
               {listTextEl}
@@ -186,7 +186,7 @@ const Navigation = () => {
         <ListItemButton
           key={key}
           onClick={() => navigate(item.to)}
-          sx={styles[item.className]}
+          sx={styles[item.styleName]}
         >
           {icon}
           {listTextEl}
