@@ -6,7 +6,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 
 import { AuthProvider } from './components/auth/auth-context';
-import { ProtectedRoute } from './components/routes';
+import ProtectedRoute from './components/protected-route';
 import Navigation from './components/navigation';
 
 import store from './store/store';

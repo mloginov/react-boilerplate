@@ -3,7 +3,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 
 import { AuthContext } from './auth/auth-context';
 
-export const ProtectedRoute = ({
+const ProtectedRoute = ({
   redirectPath = '/login',
   children,
 }) => {
@@ -12,5 +12,7 @@ export const ProtectedRoute = ({
     return <Navigate to={redirectPath} replace />;
   }
 
-  return children ? children : <Outlet />;
+  return children || <Outlet />;
 };
+
+export default ProtectedRoute
