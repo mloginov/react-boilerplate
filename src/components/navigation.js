@@ -96,7 +96,6 @@ const Navigation = () => {
     drawerPaper: {
       width: drawerWidth,
     },
-    toolbar: theme.mixins.toolbar,
     nested: {
       paddingLeft: theme.spacing(4),
     },
@@ -151,7 +150,8 @@ const Navigation = () => {
           <Badge
             badgeContent={requestsCountMap[item.requestsKey]}
             color="primary"
-            sx={{"& .MuiBadge-badge": styles.badge}}>
+            slotProps={{badge: {sx: styles.badge}}}
+          >
             {itemText}
           </Badge>
         );
@@ -202,8 +202,6 @@ const Navigation = () => {
       PaperProps={{sx: styles.drawerPaper}}
       anchor="left"
     >
-      <div style={styles.toolbar} />
-      <Divider />
       <List>
         <div>
           {isAuth ? (
