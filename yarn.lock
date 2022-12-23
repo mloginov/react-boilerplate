@@ -1372,7 +1372,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.12.1, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.18.9, @babel/runtime@npm:^7.20.6, @babel/runtime@npm:^7.3.1, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.8.3, @babel/runtime@npm:^7.8.7, @babel/runtime@npm:^7.9.2":
+"@babel/runtime@npm:^7.12.1, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.18.9, @babel/runtime@npm:^7.20.6, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.8.7, @babel/runtime@npm:^7.9.2":
   version: 7.20.6
   resolution: "@babel/runtime@npm:7.20.6"
   dependencies:
@@ -1826,37 +1826,6 @@ __metadata:
     "@emotion/styled":
       optional: true
   checksum: 7ce12255806cc38c999d23666b5767b23fd201c8612a7200513db76bb3b44044b51947dc5bb06ab311cff1d1208aff7d66e9b93eedd642247658668afbd754fe
-  languageName: node
-  linkType: hard
-
-"@mui/styles@npm:^5.11.0":
-  version: 5.11.0
-  resolution: "@mui/styles@npm:5.11.0"
-  dependencies:
-    "@babel/runtime": ^7.20.6
-    "@emotion/hash": ^0.9.0
-    "@mui/private-theming": ^5.11.0
-    "@mui/types": ^7.2.3
-    "@mui/utils": ^5.11.0
-    clsx: ^1.2.1
-    csstype: ^3.1.1
-    hoist-non-react-statics: ^3.3.2
-    jss: ^10.9.2
-    jss-plugin-camel-case: ^10.9.2
-    jss-plugin-default-unit: ^10.9.2
-    jss-plugin-global: ^10.9.2
-    jss-plugin-nested: ^10.9.2
-    jss-plugin-props-sort: ^10.9.2
-    jss-plugin-rule-value-function: ^10.9.2
-    jss-plugin-vendor-prefixer: ^10.9.2
-    prop-types: ^15.8.1
-  peerDependencies:
-    "@types/react": ^17.0.0
-    react: ^17.0.0
-  peerDependenciesMeta:
-    "@types/react":
-      optional: true
-  checksum: 6cd4bdc21fe0195b6779e00965a5e9df70abbec1d663741fda373a6314a12ac5c6a66a600ddb357bb9e7c6c090d1ec7d1f84655dd9b5409a334d96a1110722d1
   languageName: node
   linkType: hard
 
@@ -3415,16 +3384,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"css-vendor@npm:^2.0.8":
-  version: 2.0.8
-  resolution: "css-vendor@npm:2.0.8"
-  dependencies:
-    "@babel/runtime": ^7.8.3
-    is-in-browser: ^1.0.2
-  checksum: a185d200db498b77df517c5378c760bcdcc5104e6fee046f8c8c399d7d3708e6b4f292f05a27f6b5dae7a3539caa63884a10cb72a45f75749bae73ac87175ed4
-  languageName: node
-  linkType: hard
-
 "css-what@npm:^6.0.1":
   version: 6.1.0
   resolution: "css-what@npm:6.1.0"
@@ -4937,13 +4896,6 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"hyphenate-style-name@npm:^1.0.3":
-  version: 1.0.4
-  resolution: "hyphenate-style-name@npm:1.0.4"
-  checksum: 4cfeb47e98eab9c25e6dece20da772cc914a9f8e5ee794cf8db105b0649dd64a61d8ee8ff32acf23ae0ac181db8fcbe4a6abb2f7de48ae52b42a85bbf1aacb86
-  languageName: node
-  linkType: hard
-
 "iconv-lite@npm:0.4.24":
   version: 0.4.24
   resolution: "iconv-lite@npm:0.4.24"
@@ -5228,13 +5180,6 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"is-in-browser@npm:^1.0.2, is-in-browser@npm:^1.1.3":
-  version: 1.1.3
-  resolution: "is-in-browser@npm:1.1.3"
-  checksum: 2696bb61677f15181c32a552c0d1aeea33fc8a5c945e2f21e6673207b256b6cf8170a94f6e9f4e242dc943aaa4325eacad709ac1ec6fd82767f3367755bab5ce
-  languageName: node
-  linkType: hard
-
 "is-lambda@npm:^1.0.1":
   version: 1.0.1
   resolution: "is-lambda@npm:1.0.1"
@@ -5492,92 +5437,6 @@ fsevents@~2.3.2:
   bin:
     json5: lib/cli.js
   checksum: 70582bc91b42319608fa9d6dd53791078cec9021a5ba3a9b025878cd69e18e0978a09c7f04e106b5470cb2af295b75c91c38e0bcd05ceb452e4d57c6a884d9a7
-  languageName: node
-  linkType: hard
-
-"jss-plugin-camel-case@npm:^10.9.2":
-  version: 10.9.2
-  resolution: "jss-plugin-camel-case@npm:10.9.2"
-  dependencies:
-    "@babel/runtime": ^7.3.1
-    hyphenate-style-name: ^1.0.3
-    jss: 10.9.2
-  checksum: 3f24e32fe5e8fd5c90bff2e2fee2618b21c3991e09b95bc43d0a694155a09ccf7dd8f784c88356ab27cfb816be2d34b6c29ad9bcba1e7f9ef3d489e85b344cfc
-  languageName: node
-  linkType: hard
-
-"jss-plugin-default-unit@npm:^10.9.2":
-  version: 10.9.2
-  resolution: "jss-plugin-default-unit@npm:10.9.2"
-  dependencies:
-    "@babel/runtime": ^7.3.1
-    jss: 10.9.2
-  checksum: dca4ef23111e0a96a6f3bf67997f4d0a2f95fefe83c4a06737a91f72524b86f193482bb824d09202d1c6db61a372fd4a0287110a71f23353a52ab997d860af5f
-  languageName: node
-  linkType: hard
-
-"jss-plugin-global@npm:^10.9.2":
-  version: 10.9.2
-  resolution: "jss-plugin-global@npm:10.9.2"
-  dependencies:
-    "@babel/runtime": ^7.3.1
-    jss: 10.9.2
-  checksum: df8924422c287eb5114391d211459fabf984b651081bb02b22c1def5b6621a9783eccf1dc78ad69f1adb2df421636fb2741731fbed7107eb07df404847f799ad
-  languageName: node
-  linkType: hard
-
-"jss-plugin-nested@npm:^10.9.2":
-  version: 10.9.2
-  resolution: "jss-plugin-nested@npm:10.9.2"
-  dependencies:
-    "@babel/runtime": ^7.3.1
-    jss: 10.9.2
-    tiny-warning: ^1.0.2
-  checksum: 19fa7b24dd83d2b444ee7eebad3441683142f3e8e1c91046e6d31c305ceca3a87e466f7aeed6fedcf989cc24c10dc8e22f0104b94de3784681299edfcd0cbd6b
-  languageName: node
-  linkType: hard
-
-"jss-plugin-props-sort@npm:^10.9.2":
-  version: 10.9.2
-  resolution: "jss-plugin-props-sort@npm:10.9.2"
-  dependencies:
-    "@babel/runtime": ^7.3.1
-    jss: 10.9.2
-  checksum: 6b81fb61e9d8b363740d68bda1f26f695d1eeadff2f2ee62f04416adeff5a1a396e87811fd5012392b4f10b339c791fc9c86ecdb078eda11e8ed017263ca84ef
-  languageName: node
-  linkType: hard
-
-"jss-plugin-rule-value-function@npm:^10.9.2":
-  version: 10.9.2
-  resolution: "jss-plugin-rule-value-function@npm:10.9.2"
-  dependencies:
-    "@babel/runtime": ^7.3.1
-    jss: 10.9.2
-    tiny-warning: ^1.0.2
-  checksum: a905fdf4b2775e0c5947301dfe81ed6aca03ae47d4fbe58042f8743e12df2fdca98edecd79eeaaf0357b7eef3d50144f320735f7403c0a17725b1c5d97622c78
-  languageName: node
-  linkType: hard
-
-"jss-plugin-vendor-prefixer@npm:^10.9.2":
-  version: 10.9.2
-  resolution: "jss-plugin-vendor-prefixer@npm:10.9.2"
-  dependencies:
-    "@babel/runtime": ^7.3.1
-    css-vendor: ^2.0.8
-    jss: 10.9.2
-  checksum: 3f015d543519a96ad98c97ab9a70bc13d761e5907ed19301a3f9e1deb7d956d75088bee07a6b3d4c5dcca7ddccbd9d8f1351efba7a677288ec976ab3de4ee106
-  languageName: node
-  linkType: hard
-
-"jss@npm:10.9.2, jss@npm:^10.9.2":
-  version: 10.9.2
-  resolution: "jss@npm:10.9.2"
-  dependencies:
-    "@babel/runtime": ^7.3.1
-    csstype: ^3.0.2
-    is-in-browser: ^1.1.3
-    tiny-warning: ^1.0.2
-  checksum: a34a7fddd2457c84c926da586d33ef966d3ff43862ff7a0ad5989298fd64d687f0ca71c9d21ecfb52a3360edd0d47530501b25262533b5cccade200ed61e9fa1
   languageName: node
   linkType: hard
 
@@ -6716,7 +6575,6 @@ fsevents@~2.3.2:
     "@faker-js/faker": ^7.6.0
     "@mui/icons-material": ^5.11.0
     "@mui/material": ^5.11.0
-    "@mui/styles": ^5.11.0
     "@reach/router": ^1.3.4
     "@reduxjs/toolkit": ^1.9.1
     babel-loader: ^9.1.0
@@ -7826,13 +7684,6 @@ resolve@^2.0.0-next.3:
   version: 1.1.0
   resolution: "thunky@npm:1.1.0"
   checksum: eceb856b6412ecd02c24731a2441698aa57622e03b0a4d6d1dea47d7b173aca54980fd2fba5b3a2e11ccec48373c46483f7f55a46717bfc07645395fa57267a6
-  languageName: node
-  linkType: hard
-
-"tiny-warning@npm:^1.0.2":
-  version: 1.0.3
-  resolution: "tiny-warning@npm:1.0.3"
-  checksum: 6cf9f66cb765b893976b8cd1c1310338861f30fb04d02ef2c8e0a748cbc2ed5acd8bb1954b78c15f640ad4116def67134d7d705f2a0c9bf27e6e2eb3e92bff29
   languageName: node
   linkType: hard
 
