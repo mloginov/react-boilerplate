@@ -1928,21 +1928,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@reach/router@npm:^1.3.4":
-  version: 1.3.4
-  resolution: "@reach/router@npm:1.3.4"
-  dependencies:
-    create-react-context: 0.3.0
-    invariant: ^2.2.3
-    prop-types: ^15.6.1
-    react-lifecycles-compat: ^3.0.4
-  peerDependencies:
-    react: 15.x || 16.x || 16.4.0-alpha.0911da3
-    react-dom: 15.x || 16.x || 16.4.0-alpha.0911da3
-  checksum: 7fedb32b5f589d0de236f83af7a0098bef93327925ac3dc090026ce79f6571005207d872fb01378ef00dfcd6e9ed0f0583755c5817ae9d85f3fd6d5b34b84417
-  languageName: node
-  linkType: hard
-
 "@reduxjs/toolkit@npm:^1.9.1":
   version: 1.9.1
   resolution: "@reduxjs/toolkit@npm:1.9.1"
@@ -1960,6 +1945,13 @@ __metadata:
     react-redux:
       optional: true
   checksum: 3d76e40d5b77394dc026def5fe678b039efa91e4ae1266ab20f6d1cc5fa5b601552063bc65f194856575917c295d4657d512120317543d0a55e1eb9d926badaa
+  languageName: node
+  linkType: hard
+
+"@remix-run/router@npm:1.2.1":
+  version: 1.2.1
+  resolution: "@remix-run/router@npm:1.2.1"
+  checksum: 878bcaf8d3eb5490aad9d92d2243f1cdfc3436f354f46a6f9395ea9ad166367fe81f62009d2e84acb5f6db5b725b8839dab0052d5a27abdbbfd141cccebfc9f8
   languageName: node
   linkType: hard
 
@@ -3329,19 +3321,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"create-react-context@npm:0.3.0":
-  version: 0.3.0
-  resolution: "create-react-context@npm:0.3.0"
-  dependencies:
-    gud: ^1.0.0
-    warning: ^4.0.3
-  peerDependencies:
-    prop-types: ^15.0.0
-    react: ^0.14.0 || ^15.0.0 || ^16.0.0
-  checksum: dfb153bbcfe44fb0b5d74e097f41fef382c9ea513084f604fea1759aea6683da0eef13b02ede2f0672c4eeacdd8efce0023935ca02909fcb2ae8be28b9aa63f5
-  languageName: node
-  linkType: hard
-
 "cross-spawn@npm:^7.0.2, cross-spawn@npm:^7.0.3":
   version: 7.0.3
   resolution: "cross-spawn@npm:7.0.3"
@@ -4613,13 +4592,6 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"gud@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "gud@npm:1.0.0"
-  checksum: 08be6bf30eb713b0e115a4676418b3805b739703956fd861710f59ce355c047102954e4d79172b180912d06794e8d94f702e9367ac6843c2fae40c8c726a4907
-  languageName: node
-  linkType: hard
-
 "handle-thing@npm:^2.0.0":
   version: 2.0.1
   resolution: "handle-thing@npm:2.0.1"
@@ -5026,15 +4998,6 @@ fsevents@~2.3.2:
   version: 3.1.1
   resolution: "interpret@npm:3.1.1"
   checksum: 536f559282d28032802df49e1c68d51250125603e932e7813112b5f0007465668f281ca17366d84c28393dda853d11cfba070eec9648e2e4d712387eb0c615a2
-  languageName: node
-  linkType: hard
-
-"invariant@npm:^2.2.3":
-  version: 2.2.4
-  resolution: "invariant@npm:2.2.4"
-  dependencies:
-    loose-envify: ^1.0.0
-  checksum: 96d8a2a4f0ad21020c5847546fc36bec5c0870d99f071aaa93df00c1036439d48211a1823ab6128f78a15ccc4c4f62baf6a65f6c0ed489270dd44d0a04f443a1
   languageName: node
   linkType: hard
 
@@ -5546,7 +5509,7 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"loose-envify@npm:^1.0.0, loose-envify@npm:^1.1.0, loose-envify@npm:^1.4.0":
+"loose-envify@npm:^1.1.0, loose-envify@npm:^1.4.0":
   version: 1.4.0
   resolution: "loose-envify@npm:1.4.0"
   dependencies:
@@ -6489,7 +6452,7 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.6.1, prop-types@npm:^15.6.2, prop-types@npm:^15.8.1":
+"prop-types@npm:^15.6.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -6575,7 +6538,6 @@ fsevents@~2.3.2:
     "@faker-js/faker": ^7.6.0
     "@mui/icons-material": ^5.11.0
     "@mui/material": ^5.11.0
-    "@reach/router": ^1.3.4
     "@reduxjs/toolkit": ^1.9.1
     babel-loader: ^9.1.0
     clsx: ^1.1.1
@@ -6597,6 +6559,7 @@ fsevents@~2.3.2:
     react-dom: ^18.2.0
     react-hook-form: ^7.40.0
     react-redux: ^8.0.5
+    react-router-dom: ^6.6.1
     webpack: ^5.75.0
     webpack-cli: ^5.0.1
     webpack-dev-server: ^4.11.1
@@ -6638,13 +6601,6 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"react-lifecycles-compat@npm:^3.0.4":
-  version: 3.0.4
-  resolution: "react-lifecycles-compat@npm:3.0.4"
-  checksum: 82176a55ef7526414d770d5e07dc1d28b4c7f20281f22c6f53f3a98df9dbbb5d70c94bebee57b4ea8ccc2eee430b907ca7b564a42fbdd0ed21e7c43bfee35404
-  languageName: node
-  linkType: hard
-
 "react-redux@npm:^8.0.5":
   version: 8.0.5
   resolution: "react-redux@npm:8.0.5"
@@ -6674,6 +6630,30 @@ fsevents@~2.3.2:
     redux:
       optional: true
   checksum: bcc2bf6cdca704185d7a85205476790f29f76495e2072fa39a4c4b186d179eed65300c0ee91b9c3cde7731df81f941300d5b54aabee1c3b706f2a3ffe4b9d155
+  languageName: node
+  linkType: hard
+
+"react-router-dom@npm:^6.6.1":
+  version: 6.6.1
+  resolution: "react-router-dom@npm:6.6.1"
+  dependencies:
+    "@remix-run/router": 1.2.1
+    react-router: 6.6.1
+  peerDependencies:
+    react: ">=16.8"
+    react-dom: ">=16.8"
+  checksum: 9497205406bd4fab23e1e5f5f3900c30fb77e3c1bcad9ce56c4eb4f35f01094bf7a83f2d11f34a8a39a187faf6fa8a0ca6dace0a72e10daf9c0378e01bcf4a74
+  languageName: node
+  linkType: hard
+
+"react-router@npm:6.6.1":
+  version: 6.6.1
+  resolution: "react-router@npm:6.6.1"
+  dependencies:
+    "@remix-run/router": 1.2.1
+  peerDependencies:
+    react: ">=16.8"
+  checksum: 81b02bfa60c3f8d205d774f4ad439b39224e175af59d343c5466bfb10eb5e72e720cc6f3f23bae84fba41a4e74549884e77c67b30876f62ab51afe28db8376d8
   languageName: node
   linkType: hard
 
@@ -7939,15 +7919,6 @@ resolve@^2.0.0-next.3:
   version: 1.1.2
   resolution: "vary@npm:1.1.2"
   checksum: 591f059f727ac1ba0d97cb7767f8583a03fcbb07db7be2b7dce838ede520ec0e958a41cb19077054769077fdc49a9b9a2dc391c83426bfee89c054b8cc7404bf
-  languageName: node
-  linkType: hard
-
-"warning@npm:^4.0.3":
-  version: 4.0.3
-  resolution: "warning@npm:4.0.3"
-  dependencies:
-    loose-envify: ^1.0.0
-  checksum: 20ef5d29ff9c20af3060e504914a00d5a90ce346e75e6691efbedb540481cdc82070c966d75195f812de64bb0bd7f1b02315fcb52469db151c0f15e29002781c
   languageName: node
   linkType: hard
 

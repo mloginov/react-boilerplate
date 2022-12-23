@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { navigate } from '@reach/router';
 import { useSelector, useDispatch } from 'react-redux';
 import _ from 'lodash';
+import { useNavigate } from 'react-router-dom';
 
 import { useTheme } from '@mui/material/styles';
 import Drawer from '@mui/material/Drawer';
@@ -87,6 +87,7 @@ const Navigation = () => {
   const { isAuth, login } = useContext(AuthContext);
   const theme = useTheme()
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const styles = {
     drawer: {

@@ -1,15 +1,16 @@
-import React from 'react';
-import { Redirect } from '@reach/router';
-import { AuthConsumer } from './auth/auth-context';
+import React, {useContext} from 'react';
+import { Navigate, Outlet } from 'react-router-dom';
 
-export const ProtectedRoute = ({ component: Component, ...rest }) => (
-  <AuthConsumer>
-    {({ isAuth }) =>
-      isAuth ? <Component {...rest} /> : <Redirect from="" to="login" noThrow />
-    }
-  </AuthConsumer>
-);
+import { AuthContext } from './auth/auth-context';
 
-export const PublicRoute = ({ component: Component, ...rest }) => (
-  <Component {...rest} />
-);
+export const ProtectedRoute = ({
+  redirectPath = '/login',
+  children,
+}) => {
+  const { isAuth } = useContext(AuthContext);
+  if (!isAuth) {
+    return <Navigate to={redirectPath} replace />;
+  }
+
+  return children ? children : <Outlet />;
+};

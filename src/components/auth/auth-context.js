@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const AuthContext = React.createContext({
   login: () => {},
@@ -7,8 +8,12 @@ export const AuthContext = React.createContext({
 
 const AuthProvider = (props) => {
   const [isAuth, setAuth] = useState(false);
+  const navigate = useNavigate()
   const login = () => {
-    setTimeout(() => setAuth(true), 1000);
+    setTimeout(() => {
+      setAuth(true)
+      navigate('/accounts')
+    }, 1000);
   };
   const value = useMemo(() => ({isAuth, login}), [isAuth]);
 
